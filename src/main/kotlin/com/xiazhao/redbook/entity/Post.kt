@@ -18,18 +18,18 @@ data class Post(
     var title: String,
 
     @Column(name = COLUMN_DESCRIPTION)
-    private val description: String?,
+    var description: String?,
 
     @Column(name = COLUMN_CONTENT)
-    private val content: String?,
+    var content: String?,
 
     @CreationTimestamp
     @Column(name = COLUMN_CREATE_DATA_TIME)
-    private val createDateTime: LocalDateTime,
+    private val createDateTime: LocalDateTime? = null,
 
     @UpdateTimestamp
     @Column(name = COLUMN_UPDATE_DATA_TIME)
-    private val updateDateTime: LocalDateTime,
+    private val updateDateTime: LocalDateTime? = null,
 ) {
     companion object {
         const val TABLE_NAME = "posts"
