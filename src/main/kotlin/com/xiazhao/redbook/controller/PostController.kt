@@ -16,4 +16,16 @@ class PostController(@Autowired private val postService: PostService) {
 
     @PostMapping
     fun createPost(@RequestBody postDto: PostDto) = ResponseEntity(postService.createPost(postDto), HttpStatus.CREATED)
+
+    @GetMapping("/{id}")
+    fun getPostById(@PathVariable(name = "id") id: Long) = ResponseEntity.ok(postService.getPostById(id))
+
+    @PutMapping("/{id}")
+    fun updatePostById(@PathVariable(name = "id") id: Long, @RequestBody postDto: PostDto) =
+        ResponseEntity.ok(postService.updatePostById(id, postDto))
+
+    @DeleteMapping("/{id}")
+    fun deletePostById(@PathVariable(name = "id") id: Long) =
+        ResponseEntity.ok("Post deleted").also { postService.deletePostById(id) }
+
 }
