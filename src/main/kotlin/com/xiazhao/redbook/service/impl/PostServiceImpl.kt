@@ -6,13 +6,12 @@ import com.xiazhao.redbook.exception.ResourceNotFoundException
 import com.xiazhao.redbook.payload.PostDto
 import com.xiazhao.redbook.service.PostService
 import org.modelmapper.ModelMapper
-import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 
 @Service
 class PostServiceImpl(
-    @Autowired private val postRepository: PostRepository,
-    @Autowired private val modelMapper: ModelMapper,
+    private val postRepository: PostRepository,
+    private val modelMapper: ModelMapper,
 ) : PostService {
 
     override fun getAllPosts(): List<PostDto> = postRepository.findAll().map { it.mapToDto() }
