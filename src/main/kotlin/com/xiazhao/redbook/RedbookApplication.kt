@@ -7,5 +7,5 @@ import org.springframework.boot.runApplication
 class RedbookApplication
 
 fun main(args: Array<String>) {
-	runApplication<RedbookApplication>(*args)
+    runApplication<RedbookApplication>(*args)
 }
