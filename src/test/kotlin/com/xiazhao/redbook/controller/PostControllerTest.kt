@@ -1,7 +1,6 @@
 package com.xiazhao.redbook.controller
 
 import com.fasterxml.jackson.databind.ObjectMapper
-import com.fasterxml.jackson.databind.ObjectWriter
 import com.ninjasquad.springmockk.MockkBean
 import com.xiazhao.redbook.data.TestDataSet.DEFAULT_POST_DTOS_WITH_ID
 import com.xiazhao.redbook.payload.PostDto
@@ -44,11 +43,10 @@ internal class PostControllerTest(
     @Test
     fun createPost_withInvalidRequestBody_returnResponseEntityWithErrorMessage() {
         val postDto = PostDto(title = "1", description = "description", content = "content")
-        val objectWriter: ObjectWriter = objectMapper.writer().withDefaultPrettyPrinter()
         mockMvc.perform(post("/api/posts")
             .accept(MediaType.APPLICATION_JSON)
             .contentType(MediaType.APPLICATION_JSON_VALUE)
-            .content(objectWriter.writeValueAsString(postDto))
+            .content(objectMapper.writeValueAsString(postDto))
         ).andExpect(status().isBadRequest)
             .andExpect(jsonPath("\$.title").value(PostDto.TITLE_RESTRICTION_MIN_LENGTH_ERROR_MSG))
     }
