@@ -5,6 +5,7 @@ import com.xiazhao.redbook.service.PostService
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
+import javax.validation.Valid
 
 @RestController
 @RequestMapping("/api/posts")
@@ -14,7 +15,7 @@ class PostController(private val postService: PostService) {
     fun getAllPosts() = ResponseEntity.ok(postService.getAllPosts())
 
     @PostMapping
-    fun createPost(@RequestBody postDto: PostDto) = ResponseEntity(postService.createPost(postDto), HttpStatus.CREATED)
+    fun createPost(@Valid @RequestBody postDto: PostDto) = ResponseEntity(postService.createPost(postDto), HttpStatus.CREATED)
 
     @GetMapping("/{id}")
     fun getPostById(@PathVariable(name = "id") id: Long) = ResponseEntity.ok(postService.getPostById(id))
