@@ -8,8 +8,8 @@ import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.http.HttpStatus
 
 @SpringBootTest
-internal class RedbookControllerTest(
-    @Autowired val redbookController: RedbookController
+internal class RedbookControllerTest @Autowired constructor(
+    private val redbookController: RedbookController,
 ) {
 
     @Test
