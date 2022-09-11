@@ -11,6 +11,7 @@
 	<groupId>com.xiazhao</groupId>
 	<artifactId>redbook</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<packaging>war</packaging>
 	<name>redbook</name>
 	<description>Redbook demo app</description>
 	<properties>
